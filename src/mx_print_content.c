@@ -17,5 +17,6 @@ void mx_print_content(char *path) {
             mx_printstr("   ");
         }
     }
-    mx_printstr("\n");
+    mx_printstr("\n\n");
+    closedir(ddd);
 }
