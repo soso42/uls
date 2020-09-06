@@ -51,12 +51,12 @@ void mx_error_illegal_option(const char *ch);
 void mx_error_no_such_file(char *filename);
 
 // Memory
-void mx_alloc_clean_up(t_main *strct);
+void mx_alloc_clean_up(t_main *main);
 
 // Parse
-void mx_parse_data(t_main *main, char **argv);
+void mx_parse_data(t_main *main, int argc, char **argv);
 void mx_parse_flags(t_main *main, char **argv);
-void mx_parse_file_paths(t_main *main, char **argv);
+void mx_parse_file_paths(t_main *main, int argc, char **argv);
 int mx_get_shell_width();
 
 // Output

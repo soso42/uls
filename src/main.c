@@ -8,11 +8,11 @@ int main(int argc, char **argv) {
 
     t_main main;
 
-    mx_parse_data(&main, argv);
+    mx_parse_data(&main, argc, argv);
 
     //mx_list_files(".", 0);
 
-    for (int i = 0; main.dirs[i]; i++) {
+    for (int i = 0; main.dirs[i] != NULL; i++) {
 
         if (!mx_file_exists(main.dirs[i])) {
             mx_error_no_such_file(main.dirs[i]);
