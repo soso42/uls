@@ -16,22 +16,6 @@
 // Macros
 #define ARGUMENTS "lRart1CmUcASG"      // List of supported flags
 
-typedef struct s_flags {
-    bool l;
-    bool R;
-    bool a;
-    bool r;
-    bool t;
-    bool D1;
-    bool C;
-    bool m;
-    bool U;
-    bool c;
-    bool A;
-    bool S;
-    bool G;
-}           t_flags;
-
 typedef struct s_main {
     char **dirs;                  // The list of directories where we run ls
     char *flags;
@@ -60,12 +44,15 @@ void mx_parse_file_paths(t_main *main, int argc, char **argv);
 int mx_get_shell_width();
 
 // Output
-void mx_list_files(t_main main, char *basePath, int root);
+void mx_list_files(t_main *main, char *basePath, int root);
 void mx_print_filelist(t_filelist* filelist);
-void mx_process_filelist(t_main main, char *path);
+void mx_process_filelist(t_main *main, char *path);
 t_filelist *mx_fl_create_node(char *filename);
 void mx_fl_push_back(t_filelist **list, char *filename);
 void mx_delete_filelist(t_filelist *filelist);
+void mx_print_format_one(t_main *main, t_filelist *filelist);
+void mx_print_format_details(t_main *main, t_filelist *filelist);
+void mx_print_format_standard(t_main *main, t_filelist *filelist);
 
 // Utils
 int mx_file_exists(char *filename);

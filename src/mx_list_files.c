@@ -4,7 +4,7 @@
 
 #include "../inc/uls.h"
 
-void mx_list_files(t_main main, char *basePath, int root) {
+void mx_list_files(t_main *main, char *basePath, int root) {
 
     DIR *dir;
     struct dirent *entry;
