@@ -13,7 +13,7 @@ void mx_list_files(char *basePath, int root) {
     if (!(dir = opendir(basePath)))
         return;
 
-    mx_print_content(basePath);
+    mx_process_filelist(basePath);          // Process all files in current directory
 
 //    while ((entry = readdir(dir)) != NULL) {
 //        if (entry->d_type == DT_DIR) {

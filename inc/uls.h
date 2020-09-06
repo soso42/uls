@@ -38,7 +38,11 @@ typedef struct s_main {
     bool R;
 }           t_main;
 
-void mx_print_content(char *path);
+typedef struct s_filelist {
+    char *filename;
+}           t_filelist;
+
+
 char *mx_getdir(char *argv);
 
 // Errors
@@ -56,10 +60,16 @@ int mx_get_shell_width();
 
 // Output
 void mx_list_files(char *path, int root);
+void mx_print_filelist(t_list* head);
+void mx_process_filelist(char *path);
 
 // Utils
 int mx_file_exists(char *filename);
 int mx_is_regular_file(const char *filename);
 int mx_is_folder(const char *filename);
+
+// Linked list
+void mx_bubblesort_list_asc(t_list *head);
+void mx_bubblesort_list_des(t_list *head);
 
 #endif //ULS_ULS_H

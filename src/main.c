@@ -12,9 +12,20 @@ int main(int argc, char **argv) {
 
     //mx_list_files(".", 0);
 
-    for (int i = 0; main.dirs[i]; i++)
-        mx_list_files(main.dirs[i], 0);
+    for (int i = 0; main.dirs[i]; i++) {
 
+        if (!mx_file_exists(main.dirs[i])) {
+            mx_error_no_such_file(main.dirs[i]);
+            continue;
+        }
+
+        if (mx_is_regular_file(main.dirs[i])) {
+            mx_printstr(main.dirs[i]);
+            mx_printstr("\n\n");
+        }
+
+        mx_list_files(main.dirs[i], 0);
+    }
 
     mx_alloc_clean_up(&main);
     return 0;

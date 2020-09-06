@@ -15,10 +15,6 @@ void mx_parse_file_paths(t_main *main, char **argv) {
         i = 1;
 
     for (int j = 0; argv[i]; j++) {
-
-        if (!mx_file_exists(argv[i]))
-            mx_error_no_such_file(argv[i]);
-
         main->dirs[j] = argv[i];
         i++;
     }
