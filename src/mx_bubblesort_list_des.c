@@ -4,13 +4,13 @@
 
 #include "../inc/uls.h"
 
-static void swap(t_list *a, t_list *b);
+static void swap(t_filelist *a, t_filelist *b);
 
-void mx_bubblesort_list_des(t_list *head) {
+void mx_bubblesort_list_des(t_filelist *head) {
 
     int swapped = 1;
-    t_list *ptr1 = NULL;
-    t_list *lptr = NULL;
+    t_filelist *ptr1 = NULL;
+    t_filelist *lptr = NULL;
 
     if (head == NULL)
         return;
@@ -22,7 +22,7 @@ void mx_bubblesort_list_des(t_list *head) {
 
         while (ptr1->next != lptr) {
 
-            if (mx_strcmp((char *)ptr1->data, (char *)ptr1->next->data) < 0) {
+            if (mx_strcmp(ptr1->filename, ptr1->next->filename) < 0) {
                 swap(ptr1, ptr1->next);
                 swapped = 1;
             }
@@ -33,8 +33,8 @@ void mx_bubblesort_list_des(t_list *head) {
     }
 }
 
-static void swap(t_list *a, t_list *b) {
-    int temp = (int)a->data;
-    a->data = b->data;
-    b->data = (void *)temp;
+static void swap(t_filelist *a, t_filelist *b) {
+    char *temp = a->filename;
+    a->filename = b->filename;
+    b->filename = temp;
 }

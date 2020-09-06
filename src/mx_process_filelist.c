@@ -8,28 +8,21 @@ void mx_process_filelist(char *path) {
 
     DIR *ddd;
     struct dirent *dirrr;
-    t_list *head = NULL;
+    t_filelist *filelist = NULL;
 
     ddd = opendir(path);
 
     while ((dirrr = readdir(ddd)) != NULL) {
-        if (mx_strcmp(dirrr->d_name, ".") != 0 && mx_strcmp(dirrr->d_name, "..")) {
-            mx_printstr(dirrr->d_name);
-            mx_printstr("   ");
-        }
+        if (filelist == NULL)
+            filelist = mx_fl_create_node(mx_strdup(dirrr->d_name));
+        else
+            mx_fl_push_back(&filelist, mx_strdup(dirrr->d_name));
     }
+
+    mx_print_filelist(filelist);
+
+    mx_delete_filelist(filelist);
+
     mx_printstr("\n\n");
-
-//    ddd = opendir(path);
-
-//    while ((dirrr = readdir(ddd)) != NULL) {
-//        if (head == NULL)
-//            head = mx_create_node((char *)dirrr->d_name);
-//        else
-//            mx_push_front(&head, (char *)dirrr->d_name);
-//    }
-//
-    mx_print_filelist(head);
-
     closedir(ddd);
 }

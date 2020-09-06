@@ -4,13 +4,13 @@
 
 #include "../inc/uls.h"
 
-t_list *mx_create_node(void *data) {
+t_filelist *mx_fl_create_node(char *filename) {
 
-    t_list *lst = malloc(sizeof(t_list));
+    t_filelist *lst = malloc(sizeof(t_list));
 
     if (!lst) return NULL;
 
-    lst->data = data;
+    lst->filename = filename;
     lst->next = NULL;
 
     return lst;

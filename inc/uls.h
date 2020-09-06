@@ -40,6 +40,7 @@ typedef struct s_main {
 
 typedef struct s_filelist {
     char *filename;
+    struct s_filelist *next;
 }           t_filelist;
 
 
@@ -60,8 +61,11 @@ int mx_get_shell_width();
 
 // Output
 void mx_list_files(char *path, int root);
-void mx_print_filelist(t_list* head);
+void mx_print_filelist(t_filelist* filelist);
 void mx_process_filelist(char *path);
+t_filelist *mx_fl_create_node(char *filename);
+void mx_fl_push_back(t_filelist **list, char *filename);
+void mx_delete_filelist(t_filelist *filelist);
 
 // Utils
 int mx_file_exists(char *filename);
@@ -69,7 +73,7 @@ int mx_is_regular_file(const char *filename);
 int mx_is_folder(const char *filename);
 
 // Linked list
-void mx_bubblesort_list_asc(t_list *head);
-void mx_bubblesort_list_des(t_list *head);
+void mx_bubblesort_list_asc(t_filelist *head);
+void mx_bubblesort_list_des(t_filelist *head);
 
 #endif //ULS_ULS_H
