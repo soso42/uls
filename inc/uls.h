@@ -14,14 +14,27 @@
 #include <sys/types.h>
 
 // Macros
-#define ARGUMENTS "lRart1CmUacASG"      // List of supported flags
+#define ARGUMENTS "lRart1CmUcASG"      // List of supported flags
 
 typedef struct s_flags {
-
+    bool l;
+    bool R;
+    bool a;
+    bool r;
+    bool t;
+    bool D1;
+    bool C;
+    bool m;
+    bool U;
+    bool c;
+    bool A;
+    bool S;
+    bool G;
 }           t_flags;
 
 typedef struct s_main {
     char **dirs;                  // The list of directories where we run ls
+    char *flags;
     bool R;
 }           t_main;
 
@@ -29,13 +42,15 @@ void mx_print_content(char *path);
 char *mx_getdir(char *argv);
 
 // Errors
-void mx_check_flags(char **argv);
+void mx_error_illegal_option(const char *ch);
+void mx_error_no_such_file(char *filename);
 
 // Memory
 void mx_alloc_clean_up(t_main *strct);
 
 // Parse
 void mx_parse_data(t_main *main, char **argv);
+void mx_parse_flags(t_main *main, char **argv);
 void mx_parse_file_paths(t_main *main, char **argv);
 int mx_get_shell_width();
 

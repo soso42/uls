@@ -6,12 +6,10 @@
 
 void mx_parse_data(t_main *main, char **argv) {
 
-    mx_check_flags(argv);           // Check validity of flags [-ACGRSTaclmrtu1]
+    mx_parse_flags(main, argv);           // Check validity of flags [-ACGRSTaclmrtu1]
+                                          // and parse them if they're valid
 
-    // Here may be a function call to parse -flags
-
-    mx_parse_file_paths(main, argv);          // Create a list of directories
-                                              // where we will run ls command
-
+    mx_parse_file_paths(main, argv);      // Create a list of directories
+                                          // where we will run ls command
 
 }

@@ -4,9 +4,7 @@
 
 #include "../inc/uls.h"
 
-static void print_error_message(const char *ch);
-
-void mx_check_flags(char **argv) {
+void mx_parse_flags(t_main *main, char **argv) {
 
     char *params = NULL;
 
@@ -21,14 +19,8 @@ void mx_check_flags(char **argv) {
 
     for (int i = 1; params[i]; i++) {
         if (mx_get_char_index(ARGUMENTS, params[i]) < 0)
-            print_error_message(&params[i]);
+            mx_error_illegal_option(&params[i]);
     }
 
-}
-
-static void print_error_message(const char *ch) {
-    mx_printerror("uls illegal option -- ");
-    mx_printerror(ch);
-    mx_printerror("\nusage: uls [-ACGRSTaclmrtu1] [file ...]\n");
-    exit(1);
+    main->flags = argv[1];
 }
