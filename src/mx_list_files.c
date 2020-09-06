@@ -4,7 +4,7 @@
 
 #include "../inc/uls.h"
 
-void mx_list_files(char *basePath, int root) {
+void mx_list_files(t_main main, char *basePath, int root) {
 
     DIR *dir;
     struct dirent *entry;
@@ -13,7 +13,7 @@ void mx_list_files(char *basePath, int root) {
     if (!(dir = opendir(basePath)))
         return;
 
-    mx_process_filelist(basePath);          // Process all files in current directory
+    mx_process_filelist(main, basePath);          // Process all files in current directory
 
 //    while ((entry = readdir(dir)) != NULL) {
 //        if (entry->d_type == DT_DIR) {
@@ -30,7 +30,7 @@ void mx_list_files(char *basePath, int root) {
 //            mx_printstr(path);
 //            mx_printstr("\n");
 //
-//            mx_list_files(path, root + 2);
+//            mx_list_files(main, path, root + 2);
 //
 //        }
 ////        else {

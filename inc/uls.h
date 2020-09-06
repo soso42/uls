@@ -60,9 +60,9 @@ void mx_parse_file_paths(t_main *main, int argc, char **argv);
 int mx_get_shell_width();
 
 // Output
-void mx_list_files(char *path, int root);
+void mx_list_files(t_main main, char *basePath, int root);
 void mx_print_filelist(t_filelist* filelist);
-void mx_process_filelist(char *path);
+void mx_process_filelist(t_main main, char *path);
 t_filelist *mx_fl_create_node(char *filename);
 void mx_fl_push_back(t_filelist **list, char *filename);
 void mx_delete_filelist(t_filelist *filelist);

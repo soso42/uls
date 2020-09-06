@@ -4,7 +4,7 @@
 
 #include "../inc/uls.h"
 
-void mx_process_filelist(char *path) {
+void mx_process_filelist(t_main main, char *path) {
 
     DIR *ddd;
     struct dirent *dirrr;
@@ -22,7 +22,5 @@ void mx_process_filelist(char *path) {
     mx_print_filelist(filelist);
 
     mx_delete_filelist(filelist);
-
-    mx_printstr("\n\n");
     closedir(ddd);
 }

@@ -24,7 +24,7 @@ int main(int argc, char **argv) {
             mx_printstr("\n\n");
         }
 
-        mx_list_files(main.dirs[i], 0);
+        mx_list_files(main, main.dirs[i], 0);
     }
 
     mx_alloc_clean_up(&main);
