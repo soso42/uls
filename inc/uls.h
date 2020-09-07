@@ -27,7 +27,6 @@ typedef struct s_filelist {
     struct s_filelist *next;
 }           t_filelist;
 
-
 char *mx_getdir(char *argv);
 
 // Errors
@@ -53,11 +52,14 @@ void mx_delete_filelist(t_filelist *filelist);
 void mx_print_format_one(t_main *main, t_filelist *filelist);
 void mx_print_format_details(t_main *main, t_filelist *filelist);
 void mx_print_format_standard(t_main *main, t_filelist *filelist);
+void mx_sort_filelist(t_main *main, t_filelist *filelist);
+void mx_format_output(t_main *main, t_filelist *filelist);
 
 // Utils
 int mx_file_exists(char *filename);
 int mx_is_regular_file(const char *filename);
 int mx_is_folder(const char *filename);
+void mx_print_space(int n);
 
 // Linked list
 void mx_bubblesort_list_asc(t_filelist *head);
