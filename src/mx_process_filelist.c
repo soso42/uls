@@ -4,8 +4,27 @@
 
 #include "../inc/uls.h"
 
+t_filelist *mx_create_filelist(t_main *main, char *path);
+
 void mx_process_filelist(t_main *main, char *path) {
 
+    // First, create a filelist from the "path" directory
+    t_filelist *filelist = mx_create_filelist(main, path);
+
+    // Sort filelist according to flags
+    mx_sort_filelist(main, filelist);
+
+    // If -a -A flags are present, remove .hidden dirs and "." ".."
+    mx_filter_filelist(main, filelist);
+
+    // For mat output according to flags and print it
+    mx_format_output(main, filelist);
+
+    // Delete the filelist and free memory
+    mx_delete_filelist(filelist);
+}
+
+t_filelist *mx_create_filelist(t_main *main, char *path) {
     DIR *ddd;
     struct dirent *dirrr;
     t_filelist *filelist = NULL;
@@ -21,10 +40,6 @@ void mx_process_filelist(t_main *main, char *path) {
         }
     }
 
-    mx_sort_filelist(main, filelist);
-//    mx_filter_filelist(main, filelist);     // If -a -A flags are present, remove .dirs
-    mx_format_output(main, filelist);
-
-    mx_delete_filelist(filelist);
     closedir(ddd);
+    return filelist;
 }
