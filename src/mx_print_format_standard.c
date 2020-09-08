@@ -5,14 +5,14 @@
 #include "../inc/uls.h"
 
 static int get_block_width(t_filelist *filelist);
-static int get_n_nodes(t_filelist *filelist);
+
 
 void mx_print_format_standard(t_main *main, t_filelist *filelist) {
 
     int win_width = 150;
     int block_width = get_block_width(filelist);
     int ncols = 4; // win_width / block_width;
-    int nfiles = get_n_nodes(filelist);              // Number of files
+    int nfiles = mx_get_n_nodes(filelist);              // Number of files
     int nrows = (nfiles / ncols);
 
     for (int i = 0; i < nrows; i++) {
@@ -45,12 +45,4 @@ static int get_block_width(t_filelist *filelist) {
         i += 8;
 
     return i;
-}
-
-static int get_n_nodes(t_filelist *filelist) {
-    int n = 0;
-    for (t_filelist *temp = filelist; temp != NULL; temp = temp->next) {
-        n++;
-    }
-    return n;
 }
