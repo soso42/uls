@@ -65,5 +65,6 @@ void mx_print_space(int n);
 void mx_bubblesort_list_asc(t_filelist *head);
 void mx_bubblesort_list_des(t_filelist *head);
 void mx_fl_pop_front(t_filelist **head);
+int mx_get_n_nodes(t_filelist *filelist);
 
 #endif //ULS_ULS_H
