@@ -19,7 +19,6 @@
 typedef struct s_main {
     char **dirs;                  // The list of directories where we run ls
     char *flags;
-    bool R;
 }           t_main;
 
 typedef struct s_filelist {
@@ -54,6 +53,7 @@ void mx_print_format_details(t_main *main, t_filelist *filelist);
 void mx_print_format_standard(t_main *main, t_filelist *filelist);
 void mx_sort_filelist(t_main *main, t_filelist *filelist);
 void mx_format_output(t_main *main, t_filelist *filelist);
+void mx_filter_filelist(t_main *main, t_filelist *filelist);
 
 // Utils
 int mx_file_exists(char *filename);

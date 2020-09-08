@@ -6,6 +6,9 @@
 
 void mx_sort_filelist(t_main *main, t_filelist *filelist) {
 
+    if (main->flags == NULL)
+        return;
+
     // If r flag is present sort files in descending order
     // else in ascending
     if (mx_get_char_index(main->flags, 'r') > 0)

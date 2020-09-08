@@ -22,6 +22,7 @@ void mx_process_filelist(t_main *main, char *path) {
     }
 
     mx_sort_filelist(main, filelist);
+//    mx_filter_filelist(main, filelist);     // If -a -A flags are present, remove .dirs
     mx_format_output(main, filelist);
 
     mx_delete_filelist(filelist);
