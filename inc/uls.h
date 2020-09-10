@@ -12,8 +12,10 @@
 #include <dirent.h>
 #include <sys/stat.h>
 #include <sys/types.h>
-//#include <pwd.h>
-//#include <sys/xattr.h>
+#include <pwd.h>
+#include <sys/xattr.h>
+#include <grp.h>
+#include <uuid/uuid.h>
 
 // Macros
 #define ARGUMENTS "lRart1CmUcASG"      // List of supported flags
