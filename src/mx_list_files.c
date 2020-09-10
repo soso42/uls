@@ -16,6 +16,7 @@ void mx_list_files(t_main *main, char *basePath, int root) {
     mx_process_filelist(main, basePath);          // Process all files in current directory
 
     // If there is R flag, recursively list all files.
+
 //    if (mx_get_char_index(main->flags, 'R') > 0) {
 //        while ((entry = readdir(dir)) != NULL) {
 //            if (entry->d_type == DT_DIR) {
