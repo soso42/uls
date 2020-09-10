@@ -15,27 +15,30 @@ void mx_list_files(t_main *main, char *basePath, int root) {
 
     mx_process_filelist(main, basePath);          // Process all files in current directory
 
-//    while ((entry = readdir(dir)) != NULL) {
-//        if (entry->d_type == DT_DIR) {
+    // If there is R flag, recursively list all files.
+//    if (mx_get_char_index(main->flags, 'R') > 0) {
+//        while ((entry = readdir(dir)) != NULL) {
+//            if (entry->d_type == DT_DIR) {
 //
-//            if (strcmp(entry->d_name, ".") == 0 || strcmp(entry->d_name, "..") == 0)
-//                continue;
+//                if (strcmp(entry->d_name, ".") == 0 || strcmp(entry->d_name, "..") == 0)
+//                    continue;
 //
-//            strcpy(path, basePath);
-//            strcat(path, "/");
-//            strcat(path, entry->d_name);
+//                strcpy(path, basePath);
+//                strcat(path, "/");
+//                strcat(path, entry->d_name);
 //
-//            //printf("%*s[%s]\n", root, "", entry->d_name);
+//                //printf("%*s[%s]\n", root, "", entry->d_name);
 //
-//            mx_printstr(path);
-//            mx_printstr("\n");
+//                mx_printstr(path);
+//                mx_printstr("\n");
 //
-//            mx_list_files(main, path, root + 2);
+//                mx_list_files(main, path, root + 2);
 //
+//            }
+////            else {
+////                printf("%*s- %s\n", root, "", entry->d_name);     // Prints reg. files
+////            }
 //        }
-////        else {
-////            printf("%*s- %s\n", root, "", entry->d_name);     // Prints reg. files
-////        }
 //    }
 
     closedir(dir);

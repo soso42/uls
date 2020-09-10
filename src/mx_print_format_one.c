@@ -13,5 +13,5 @@ void mx_print_format_one(t_main *main, t_filelist *filelist) {
         if (cur->next != NULL)
             mx_printstr("\n");
     }
-    mx_printstr("\n");
+    mx_printstr("\n\n");
 }
