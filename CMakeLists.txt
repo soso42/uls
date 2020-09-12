@@ -8,6 +8,7 @@ file(GLOB uls_SRC
         "libmx/src/*.c"
         "inc/*.h"
         "src/*.c"
+        "src/errors/*.c"
         )
 
 add_executable(uls ${uls_SRC})

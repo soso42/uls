@@ -1,41 +1,41 @@
 #include "../inc/libmx.h"
 
-static void mx_to_string(int number, char *str) {
+static size_t nbrlen(int nbr) {
+    int len;
 
-    int i = 0;
-    bool is_negative = false;
-
-    if (number == 0)
-        str[i] = '0';
-
-    if (number < 0) {
-        number = -number;
-        is_negative = true;
+    len = 0;
+    if (nbr == 0)
+        return (1);
+    if (nbr < len)
+        len += 1;
+    while (nbr != 0)
+    {
+        nbr = nbr / 10;
+        len++;
     }
-
-    for (; number > 0; i++) {
-        str[i] = (char)((number % 10) + 48);
-        number = number / 10;
-    }
-
-    if (is_negative)
-        str[i] = '-';
+    return (len);
 }
 
 char *mx_itoa(int number) {
+    size_t	i;
+    size_t	n_size;
+    char	*str;
 
-    char *str = NULL;
-
-    if (number == -2147483648) {
-        str = mx_strdup("-2147483648");
-        return str;
+    i = 0;
+    if (number == -2147483648)
+        return (mx_strdup("-2147483648"));
+    n_size = nbrlen(number);
+    if (!(str = (char *)malloc(sizeof(char) * (n_size + 1))))
+        return (NULL);
+    str[n_size] = 0;
+    if (number < 0) {
+        str[0] = '-';
+        number *= -1;
+        i += 1;
     }
-
-    if (!(str = mx_strnew(12)))
-        return NULL;
-
-    mx_to_string(number, str);
-
-    mx_str_reverse(str);
-    return str;
+    while (i < n_size--) {
+        str[n_size] = (number % 10) + '0';
+        number /= 10;
+    }
+    return (str);
 }
