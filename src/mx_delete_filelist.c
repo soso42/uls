@@ -13,6 +13,7 @@ void mx_delete_filelist(t_filelist *filelist) {
         cur = filelist->next;
 
         mx_strdel(&filelist->filename);
+        //mx_strdel(&filelist->user_name);
 
         if (filelist != NULL)
             free(filelist);

@@ -16,6 +16,8 @@ void mx_process_filelist(t_main *main, char *path) {
 
     filelist = mx_create_filelist(main, path);
 
+    //mx_get_attributes(filelist, path);
+
     // Sort filelist according to flags
     mx_sort_filelist(main, filelist);
 
@@ -23,7 +25,7 @@ void mx_process_filelist(t_main *main, char *path) {
     //mx_filter_filelist(main, filelist);
 
     // For mat output according to flags and print it
-    mx_format_output(main, filelist);
+    mx_format_output(main, filelist, path);
 
     // Delete the filelist and free memory
     mx_delete_filelist(filelist);

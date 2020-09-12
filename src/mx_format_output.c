@@ -4,12 +4,12 @@
 
 #include "../inc/uls.h"
 
-void mx_format_output(t_main *main, t_filelist *filelist) {
+void mx_format_output(t_main *main, t_filelist *filelist, char *path) {
 
     if (mx_get_char_index(main->flags, '1') > 0)
         mx_print_format_one(main, filelist);
     else if (mx_get_char_index(main->flags, 'l') > 0)
-        mx_print_format_details(main, filelist);
+        mx_print_format_details(main, filelist, path);
     else
         mx_print_format_standard(main, filelist);
 
