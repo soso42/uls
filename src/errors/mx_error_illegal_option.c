@@ -2,7 +2,7 @@
 // Created by Soso Janashvili on 06.09.2020.
 //
 
-#include "../inc/uls.h"
+#include "../../inc/uls.h"
 
 void mx_error_illegal_option(const char *ch) {
     mx_printerror("uls illegal option -- ");
