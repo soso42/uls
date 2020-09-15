@@ -4,17 +4,20 @@
 
 #include "../inc/uls.h"
 
-static void print_stats(struct stat sb, char *name, int size_len) {
+void mx_print_nlink(struct stat *sb);
+
+static void print_stats(struct stat *sb, char *name, int size_len) {
     struct passwd   *psswd;
     struct group    *grp;
 
-    psswd = getpwuid(sb.st_uid);
-    grp = getgrgid(sb.st_gid);
+    psswd = getpwuid(sb->st_uid);
+    grp = getgrgid(sb->st_gid);
 
     mx_printstr(mx_is_dir(name) ? "d" : "-");
     mx_print_rwx(name);
     mx_printstr(" ");
-    mx_printint(sb.st_nlink);
+    //mx_printint(sb->st_nlink);
+    mx_print_nlink(sb);
     mx_printstr(" ");
     mx_printstr(psswd->pw_name);
     mx_printstr(" ");
@@ -22,7 +25,7 @@ static void print_stats(struct stat sb, char *name, int size_len) {
     mx_printstr(" ");
     mx_print_file_size(name, size_len);
     mx_printstr(" ");
-    mx_print_m_time(&sb);
+    mx_print_m_time(sb);
     mx_printstr(" ");
 }
 
@@ -40,11 +43,10 @@ static void process_file_stats(const char *parent, char *name, int size_len) {
     if (lstat(parent, &st_buf) == -1)
         perror("");
     else
-        print_stats(st_buf, path, size_len);
+        print_stats(&st_buf, path, size_len);
 
     free(path);
 }
-
 
 void mx_print_format_details(t_main *main, t_filelist *filelist, char *path) {
 
@@ -61,7 +63,7 @@ void mx_print_format_details(t_main *main, t_filelist *filelist, char *path) {
 }
 
 
-//void mx_print_nlink(char *name) {
+void mx_print_nlink(struct stat *sb) {
 //    char *path = NULL;
 //    char *temp = NULL;
 //
@@ -70,4 +72,8 @@ void mx_print_format_details(t_main *main, t_filelist *filelist, char *path) {
 //    free(path);
 //    path = mx_strjoin(temp, name);
 //    free(temp);
-//}
+
+    int x = (int)sb->st_nlink;
+
+    mx_printint(x);
+}
